@@ -4,4 +4,6 @@ machine:
 
 dependencies:
   post:
+    - cp config/database.yml.circleci config/database.yml
+    - cp config/webistrano_config.rb.sample config/webistrano_config.rb
     - bundle exec rake test
