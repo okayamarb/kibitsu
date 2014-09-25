@@ -1,5 +1,5 @@
 #Webistrano - Capistrano deployment the easy way
-
+[![Circle CI](https://circleci.com/gh/okayamarb/kibitsu.png?style=badge)](https://circleci.com/gh/okayamarb/kibitsu)
 
 
 ##About
