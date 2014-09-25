@@ -20,9 +20,9 @@ gem 'whenever', :require => false
 group :development do
   gem "thin"
 
-  gem "debugger"
   gem "pry"
   gem "pry-rails"
+  gem 'pry-byebug'
 end
 
 group :test do
