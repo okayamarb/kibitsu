@@ -10,7 +10,7 @@
 <% end %>
 
 <fieldset class="fieldset">
-  <legend><%= pluralize Project.count, 'Project' %> listed</legend>
+  <legend><%= pluralize current_user.projects.count, 'Project' %> listed</legend>
 
   <% if @projects.empty? %>
     <div><%= t("project.no_configured") %></div>

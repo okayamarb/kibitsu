@@ -1,0 +1,26 @@
+<% content_for :breadcrumb do %>
+  <%= breadcrumb_box do %>
+    <%= link_to t("user_roles"), user_roles_path %>
+    <span class="divider">&raquo;</span>
+    <%= link_to @user_role.name, @user_role %>
+    <span class="divider">&raquo;</span>
+    <%= t("user_role.edit") %>
+  <% end %>
+<% end %>
+
+<% content_for :page_title do %>
+  <% @page_title = "#{t('user_role.edit')} - #{@user_role.name}" %>
+  <h2><%= t("user_role.edit") %> <%= @user_role.name %></h2>
+<% end %>
+
+<% flashed_errors(:user_role) %>
+
+<section>
+<%= form_for @user_role, :html => {:class => "form-horizontal"} do |f| %>
+  <%= render :partial => 'form', :locals => {:form => f} %>
+  <div class="form-actions">
+    <%= f.submit t("user_role.update"), class: "btn btn-primary" %>
+    <%= link_to t("user_role.back_to"), user_roles_path, :class => 'arrow_link ontheright' %>
+  </div>
+<% end %>
+</section>

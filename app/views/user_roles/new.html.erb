@@ -1,0 +1,24 @@
+<% content_for :breadcrumb do %>
+  <%= breadcrumb_box do %>
+    <%= link_to t("user_roles"), user_roles_path %>
+    <span class="divider">&raquo;</span>
+    <%= t("user_role.new") %>
+  <% end %>
+<% end %>
+
+<% content_for :page_title do %>
+  <% @page_title = t("user_role.new") %>
+  <h2><%= t("user_role.new") %></h2>
+<% end %>
+
+<% flashed_errors(:user_role) %>
+
+<div>
+  <%= form_for @user_role, :html => {:class => "form-horizontal"} do |f| %>
+    <%= render :partial => 'form', :locals => {:form => f} %>
+    <div class="form-actions">
+      <%= f.submit t("user_role.create"), class: "btn btn-primary" %>
+      <%= link_to t("user_role.back_to"), user_roles_path, :class => 'arrow_link ontheright' %>
+    </div>
+  <% end %>
+</div>

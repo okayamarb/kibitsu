@@ -1,0 +1,25 @@
+<div id="user_roles_open_content" style="<%= show_if_opened(status) %>">
+  <% if UserRole.count > 0 %>
+    <% UserRole.order(:name).each do |user_role| %>
+      <a href="<%= user_role_path(user_role) %>" class="menu_link <%= active_link_class(user_role) %>" title="<%= user_role.name %>">
+        <div class="menu_link_title">
+          <%= user_role.name %>
+        </div>
+      </a>
+    <% end %>
+  <% else %>
+    <div class="menu_item"><%= t("user_role.none") %></div>
+    <a href="<%= new_user_role_path %>" class="menu_link  menu_link_create">
+      <div class="menu_link_title">
+        <%= t("user_role.new") %>
+      </div>
+    </a>
+  <% end %>
+</div>
+<div id="user_roles_closed_content" style="<%=h show_if_closed(status) %>">
+  <a href="javascript:App.open_menu_box('user_roles')" class="menu_link  menu_link_create">
+    <div class="menu_link_title">
+      <%= pluralize(UserRole.count, 'user_role')%>
+    </div>
+  </a>
+</div>

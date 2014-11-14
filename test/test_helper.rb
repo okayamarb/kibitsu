@@ -33,7 +33,11 @@ class ActiveSupport::TestCase
 
   # Add more helper methods to be used by all tests here...
   def login(user=nil)
-    user ||= FactoryGirl.create(:user)
+    user_role = UserRole.first || FactoryGirl.build(:user_role)
+
+    user ||= FactoryGirl.build(:user)
+    user.user_roles << user_role
+    user.save
     sign_in :user, user
     return user
   end

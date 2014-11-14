@@ -1,0 +1,42 @@
+<% content_for(:breadcrumb) do %>
+  <% breadcrumb_box do %>
+    <%= link_to t("user_roles"), user_roles_path %> &gt;
+    <%= t("user_role.title") %> <%= link_to @user_role.name, user_role_path(@user_role) %>
+  <% end %>
+<% end %>
+
+<% content_for(:page_title) do %>
+  <% @page_title = "#{t('user_role.title')} #{@user_role.name}" %>
+  <h2><%= t("user_role.title") %> <%= @user_role.name %></h2>
+<% end %>
+
+<div class="box">
+  <div class="box_top"></div>
+  <div class="box_middle">
+    <div>
+      <b><%= t("user_role.name") %></b>
+      <p><%= @user_role.name %></p>
+    </div>
+    <% if current_user.admin? %>
+      <br />
+      <%= link_to t("edit"), edit_user_role_path(@user_role), :class => 'arrow_link' %> |
+      <%= link_to t("delete"), user_role_path(@user_role), :confirm => 'Are you sure?', :method => :delete, :class => 'arrow_link'  %>
+    <% end %>
+  </div>
+  <div class="box_bottom"></div>
+</div>
+
+<div class="clear"></div>
+<br>
+
+<fieldset class="fieldset">
+  <legend><%= t("users") %></legend>
+  <%= render partial: 'users', locals: { user_role_users: @user_role.user_role_users } %>
+  <%= link_to t("user_role_user.new"), new_user_role_user_path(user_role_id: @user_role.id), :class => 'arrow_link' %>
+</fieldset>
+
+<fieldset class="fieldset">
+  <legend><%= t("projects") %></legend>
+  <%= render partial: 'projects', locals: { user_role_projects: @user_role.user_role_projects } %>
+  <%= link_to t("user_role_project.new"), new_user_role_project_path(user_role_id: @user_role.id), :class => 'arrow_link' %>
+</fieldset>

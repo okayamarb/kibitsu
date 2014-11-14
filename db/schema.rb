@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110113085919) do
+ActiveRecord::Schema.define(:version => 20141113080236) do
 
   create_table "configuration_parameters", :force => true do |t|
     t.string   "name"
@@ -108,6 +108,27 @@ ActiveRecord::Schema.define(:version => 20110113085919) do
     t.text     "alert_emails"
     t.integer  "locked_by_deployment_id"
     t.integer  "locked",                  :default => 0
+  end
+
+  create_table "user_role_projects", :force => true do |t|
+    t.integer  "project_id"
+    t.integer  "user_role_id"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
+  create_table "user_role_users", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "user_role_id"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
+  create_table "user_roles", :force => true do |t|
+    t.string   "name"
+    t.string   "memo"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "users", :force => true do |t|

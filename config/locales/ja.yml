@@ -38,6 +38,7 @@ ja:
     deployments: "デプロイ回数"
     clone: "コピー"
     update: "更新する"
+    default_user_role: "デフォルトユーザーロール"
 
   project_configurations: "プロジェクトの設定"
   project_configuration:
@@ -215,3 +216,24 @@ ja:
     enabled: "使用可能にする"
     disabled: "使用不可にする"
     deployments_none: "このユーザーはまだ一度もデプロイしていません."
+
+  user_roles: "ユーザーロール一覧"
+  user_role:
+    title: "ユーザーロール"
+    none: "ユーザーロールがありません."
+    new: "ユーザーロール作成"
+    edit: "ユーザーロール編集"
+    name: "ユーザーロール名"
+    create: "作成する"
+    update: "更新する"
+    back_to: "ユーザーロール一覧に戻る"
+    users_none: "このユーザーロールには、ユーザーが設定されていません."
+    projects_none: "このユーザーロールには、プロジェクトが設定されていません."
+  user_role_user:
+    new: "ユーザー作成"
+    user: "ユーザー"
+    back_to: "ユーザーロールに戻る"
+  user_role_project:
+    new: "プロジェクト作成"
+    project: "プロジェクト"
+    back_to: "ユーザーロールに戻る"

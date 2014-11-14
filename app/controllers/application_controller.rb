@@ -22,7 +22,7 @@ protected
   end
   
   def load_project
-    @project = Project.find(params[:project_id])
+    @project = current_user.projects.find(params[:project_id])
   end
   
   def load_stage
