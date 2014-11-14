@@ -3,7 +3,9 @@ require 'test_helper'
 class StageConfigurationsControllerTest < ActionController::TestCase
 
   def setup
-    @project = FactoryGirl.create(:project)
+    @project = FactoryGirl.build(:project)
+    @project.user_roles << FactoryGirl.build(:user_role)
+    @project.save
     @stage = FactoryGirl.create(:stage, :project => @project)
     @config = FactoryGirl.create(:stage_configuration, :stage => @stage)
     @user = login

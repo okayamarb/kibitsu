@@ -112,6 +112,8 @@ module ApplicationHelper
       found = true if @user && @user == item
     when 'Stage'
       found = true if @stage && @stage == item
+    when 'UserRole'
+      found = true if @user_role && @user_role == item
     end
     
     if found

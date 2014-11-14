@@ -1,0 +1,16 @@
+<% if user_role_projects.empty? %>
+  <%= t("user_role.projects_none") %>
+<% else %>
+  <table class="sortable">
+    <tr>
+      <th width="99%"><%= t("project.title") %></th>
+      <th width="1%"></th>
+    </tr>
+    <% user_role_projects.each do |user_role_project| %>
+      <tr class="<%= cycle :even, :odd, :name => 'projects' %>">
+        <td class="nowrap"><%= user_role_project.project.name %></td>
+        <td class="nowrap"><%= link_to t("delete"), user_role_project_path(user_role_project), :confirm => 'Are you sure?', :method => :delete %></td>
+      </tr>
+    <% end %>
+  </table>
+<% end %>

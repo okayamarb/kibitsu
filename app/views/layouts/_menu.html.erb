@@ -26,3 +26,9 @@
              :path => users_path
            })%>
 
+<%= render(:partial => 'layouts/menu_box',
+           :locals => {
+             :box_type => 'user_roles',
+             :status => controller_in_use_or(UserRolesController, :open, UserRole),
+             :path => user_roles_path
+           })%>

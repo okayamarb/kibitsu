@@ -42,4 +42,8 @@ Webistrano::Application.routes.draw do
       get :deployments
     end
   end
+
+  resources :user_roles
+  resources :user_role_users, only: [:new, :destroy, :create]
+  resources :user_role_projects, only: [:new, :destroy, :create]
 end

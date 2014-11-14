@@ -1,0 +1,7 @@
+<%= form.hidden_field :user_role_id %>
+<div class="control-group">
+  <%= form.label t("user_role_project.project"), :class => "control-label" %>
+  <div class="controls">
+    <%= form.select :project_id, @projects, { include_blank: false } %>
+  </div>
+</div>

@@ -11,7 +11,9 @@ class DeploymentsControllerTest < Test::Unit::TestCase
     @request    = ActionController::TestRequest.new
     @response   = ActionController::TestResponse.new
     
-    @project = FactoryGirl.create(:project, :name => 'Project X')
+    @project = FactoryGirl.build(:project, :name => 'Project X')
+    @project.user_roles << FactoryGirl.build(:user_role)
+    @project.save
     @stage = FactoryGirl.create(:stage, :name => 'Prod', :project => @project)
     @role = FactoryGirl.create(:role, :name => 'web', :stage => @stage)
     @deployment = FactoryGirl.create(:deployment, :task => 'deploy:setup', :stage => @stage)

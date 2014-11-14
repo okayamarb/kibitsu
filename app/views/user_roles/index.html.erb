@@ -1,0 +1,39 @@
+<% content_for :breadcrumb do %>
+  <%= breadcrumb_box do %>
+    <%= t("user_roles") %>
+  <% end %>
+<% end %>
+
+<% content_for :page_title do %>
+  <% @page_title = t("user_roles") %>
+  <h2><%= t("user_roles") %></h2>
+<% end %>
+
+<fieldset class="fieldset">
+  <legend> <%= pluralize UserRole.count, 'UserRole' %> listed</legend>
+
+  <table class="sortable">
+    <thead>
+      <tr>
+        <th width="99%"><%= t("user_role.name") %></th>
+        <th width="1%"></th>
+        <th width="1%"></th>
+      </tr>
+    </thead>
+    <% @user_roles.each do |user_role| %>
+      <tr class="<%= cycle :even, :odd  %>">
+        <td><%= link_to user_role.name, user_role_path(user_role) %></td>
+        <% if current_user.admin? %>
+          <td class="nowrap"><%= link_to t("edit"), edit_user_role_path(user_role) %></td>
+          <td class="nowrap"><%= link_to t("delete"), user_role_path(user_role), :confirm => 'Are you sure?', :method => :delete %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </table>
+
+  <% if current_user.admin? %>
+    <br />
+    <%= link_to t("user_role.new"), new_user_role_path, :class => 'arrow_link' %>
+  <% end %>
+</fieldset>
+

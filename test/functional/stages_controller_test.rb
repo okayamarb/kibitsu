@@ -3,7 +3,9 @@ require 'test_helper'
 class StagesControllerTest < ActionController::TestCase
 
   def setup
-    @project = FactoryGirl.create(:project, :template => 'mongrel_rails')
+    @project = FactoryGirl.build(:project, :template => 'mongrel_rails')
+    @project.user_roles << FactoryGirl.build(:user_role)
+    @project.save
     @stage = FactoryGirl.create(:stage, :project => @project, :name => 'my_stage')
     @user = login
   end
@@ -50,7 +52,10 @@ class StagesControllerTest < ActionController::TestCase
   end
 
   test "capfile" do
-    @project = FactoryGirl.create(:project, :template => 'mongrel_rails', :name => 'Schumaker Levi')
+    @project = FactoryGirl.build(:project, :template => 'mongrel_rails', :name => 'Schumaker Levi')
+    @project.user_roles << UserRole.first
+    @project.save
+
     @stage = FactoryGirl.create(:stage, :project => @project, :name => '123 Name')
 
     # set some config values and expect to find these in the Capfile

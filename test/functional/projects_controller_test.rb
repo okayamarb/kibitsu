@@ -4,7 +4,9 @@ class ProjectsControllerTest < ActionController::TestCase
 
   def setup
     Project.delete_all
-    @project = FactoryGirl.create(:project)
+    @project = FactoryGirl.build(:project)
+    @project.user_roles << FactoryGirl.build(:user_role)
+    @project.save
   end
 
   test "should_get_index" do

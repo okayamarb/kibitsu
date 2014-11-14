@@ -8,6 +8,8 @@ class User < ActiveRecord::Base
   attr_accessible :login, :email, :password, :password_confirmation, :remember_me, :time_zone, :tz, :admin
 
   has_many :deployments, :dependent => :nullify, :order => 'created_at DESC'
+  has_many :user_role_users, dependent: :destroy
+  has_many :user_roles, through: :user_role_users
 
   validates :login, :presence => true, :uniqueness => {:case_sensitive => false}, :length => {:within => 3..40}
   validate :guard_last_admin, :on => :update
@@ -43,6 +45,11 @@ class User < ActiveRecord::Base
 
   def enable!
     self.update_column(:disabled_at, nil)
+  end
+
+  def projects
+    project_ids = self.user_roles.joins(:user_role_projects).pluck('user_role_projects.project_id')
+    Project.where(id: project_ids)
   end
 
 private
